@@ -8,6 +8,7 @@ ocv_include_directories(${IPP_INCLUDE_DIRS} ${IPP_IW_PATH}/include)
 add_definitions(-DIW_BUILD)
 if(HAVE_IPP_ICV)
   add_definitions(-DICV_BASE)
+  add_definitions(-DIW_ENABLE_EXCEPTIONS=0)
 endif()
 
 file(GLOB lib_srcs ${IPP_IW_PATH}/src/*.c)

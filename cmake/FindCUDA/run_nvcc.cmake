@@ -114,6 +114,13 @@ if( ccbin_found0 LESS 0 AND ccbin_found1 LESS 0 AND CUDA_HOST_COMPILER )
   endif()
 endif()
 
+list(FIND CUDA_NVCC_FLAGS "arch=compute_20,code=sm_20" flag_idx)
+if (flag_idx GREATER 0)
+  MATH(EXPR flag_idx "${flag_idx}-1")
+  list(REMOVE_AT CUDA_NVCC_FLAGS ${flag_idx})
+  list(REMOVE_AT CUDA_NVCC_FLAGS ${flag_idx})
+endif()
+
 # cuda_execute_process - Executes a command with optional command echo and status message.
 #
 #   status  - Status message to print if verbose is true
